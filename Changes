@@ -1,0 +1,3 @@
+1.0400 2010-04-07
+ - Split off as separate package from SimpleDB::Class. Used to be SimpleDB::Class::HTTP.
+ 

@@ -45,7 +45,7 @@ The following methods are available from this class.
 
 use Moose;
 use Digest::SHA qw(hmac_sha256_base64);
-use XML::Simple;
+use XML::Bare;
 use LWP::UserAgent;
 use HTTP::Request;
 use Time::HiRes qw(usleep);
@@ -242,7 +242,7 @@ The L<HTTP::Response> object created by the C<send_request> method.
 
 sub handle_response {
     my ($self, $response) = @_;
-    my $content = eval {XML::Simple::XMLin($response->content, ForceArray => ['Item'])};
+    my $content = eval {XML::Bare::xmlin($response->content)};
 
     # choked reconstituing the XML, probably because it wasn't XML
     if ($@) {

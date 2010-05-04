@@ -1,3 +1,6 @@
+1.0401 2010-05-04
+ - Converted to using XML::Bare, for it's 63.4 times performance boost over XML::Simple.
+
 1.0400 2010-04-07
  - Split off as separate package from SimpleDB::Class. Used to be SimpleDB::Class::HTTP.
  

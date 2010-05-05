@@ -243,8 +243,13 @@ The L<HTTP::Response> object created by the C<send_request> method.
 sub handle_response {
     my ($self, $response) = @_;
     my $content = eval {XML::Bare::xmlin($response->content)};
-    if (exists $content->{SelectResult}{Item} && ref $content->{SelectResult}{Item} ne 'ARRAY') { # force an item list into an array
-          $content->{SelectResult}{Item} = [ $content->{SelectResult}{Item} ];
+    # compatibility with SimpleDB::Class
+    if (exists $content->{SelectResult} && $content->{SelectResult} == 1) {
+        $content->{SelectResult} = {};
+    }
+    # force an item list into an array
+    if (exists $content->{SelectResult}{Item} && ref $content->{SelectResult}{Item} ne 'ARRAY') { 
+         $content->{SelectResult}{Item} = [ $content->{SelectResult}{Item} ];
     }
 
     # choked reconstituing the XML, probably because it wasn't XML

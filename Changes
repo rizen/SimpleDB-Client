@@ -1,3 +1,6 @@
+1.0600 2013-09-13
+ - Added simpledb command line app, contributed by Andrew Solomon.
+
 1.0500 2010-12-16
  - Switched to XML::Fast instead of XML::Bare. Thanks to Chad H.
 
